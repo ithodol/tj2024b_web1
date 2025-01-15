@@ -30,7 +30,7 @@
   
   <servlet-mapping>
   	<servlet-name>task3</servlet-name>
-  	<url-pattern>/day01/Task3</url-pattern>
+  	<url-pattern>/day01/task3</url-pattern>
   </servlet-mapping>
   
   
