@@ -3,8 +3,20 @@
 [HttpServletRequest]
 	1. 웹 브라우저의 HTTP 요청 정보를 저장
 	2. 주요 메소드
-		(1) .getPrameter("매개변수명");	: 요청 매개변수 이름의 값을 전달 받는다. 요청 매개변수 값이 없으면 null 반환
-		(2) .getReader()
+		(1) req.getPrameter("매개변수명");	: 요청 매개변수 이름의 값을 전달 받는다. 요청 매개변수 값이 없으면 null 반환
+		(2) req.getReader()			: HTTP HEADER BODY(본문)을 읽어들이는 객체 반환 함수
+				- req.getReader().readLine()	: body(본문) 한줄 반환 함수
+		* body(본문) content-type : application/json
+			- json (문자열)타입 -> DTO 타입 변환
+			ObjectMapper 변수명 = new ObjectMapper();
+			mapper.readValue(req.getReader(), 타입명.class);
 [HttpServletResponse]
 	1. 웹 브라우저의 HTTP 요청에 대한 *응답* 정보를 저장
+	2. 주요 메소드
+		(1) resp.getWriter("보낼자료")		: HTTP header body(본문)로 응답을 보내는 함수
+		(2) resp.setContentType("content-type")		: HTTP header body(본문) 자료의 타입을 설정하는 함수
+		* body(본문) content-type : application/json
+			- DTO 타입 -> json(문자열) 타입 변환
+			ObjectMapper 변수명 = new ObjectMapper();
+			String 결과 = 변수명.writeValueAsString(변환할자료);
 	
