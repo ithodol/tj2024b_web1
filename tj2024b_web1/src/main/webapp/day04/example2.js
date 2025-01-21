@@ -130,8 +130,11 @@ const func15 = () => {
 				
 		.then()
 			1. 응답객체 : 통신한 응답의 정보가 담긴 HTTP 응답 객체 변환
-				.then(응답객체명 => 응답객체명.json()) : body 자료를 application/json 으로 타입변환
-				.then()
+				then( 응답객체명 => 응답객체명.json() ) : response content-type : application/json 변환
+				then( 응답객체명 => 응답객체명.text() ) : response content-type : text/plain 변환
+		.then( )
+			1. 변환된 자료 객체 		
+		.catch( )
 				
 			
 			
