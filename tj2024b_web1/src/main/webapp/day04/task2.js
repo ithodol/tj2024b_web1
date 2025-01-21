@@ -32,7 +32,7 @@ const WaitingPrintAll = () => {
 	// 무엇을
 	let html = ''
 	
-	let option = {method : 'GET'} // ????
+	let option = {method : 'GET'} 
 	
 	fetch(`/tj2024b_web1/day03/waiting2`, option)
 		.then(r => r.json())
@@ -53,7 +53,7 @@ const WaitingPrintAll = () => {
 			tbody.innerHTML = html;
 		}) // then2 end
 		.catch(e => {console.log(e);})
-}
+} // f end
 WaitingPrintAll();
 
 
@@ -78,10 +78,10 @@ const WaitingUpdate = (num) => {
 				WaitingPrintAll();
 			}else{
 				alert('수정 실패');
-			}
+			} // if end
 		}) // then2 end
 		.catch(e => {console.log(e);})
-}
+} // f end
 
 
 // 대기열 삭제
@@ -97,10 +97,10 @@ const WaitingDelete = (num) => {
 				WaitingPrintAll();
 			}else{
 				alert('삭제 실패');
-			}
-		})
+			} // if end
+		}) // then2 end
 		.catch(e => {console.log(e);})
-}
+} // f end
 
 
 
