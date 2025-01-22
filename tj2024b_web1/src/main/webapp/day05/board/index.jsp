@@ -7,10 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page = "/day05/header.jsp"></jsp:include>
+	<jsp:include page = "/day05/board/header.jsp"></jsp:include>
 	<div>
-		<h3>게시물 작성 : 작성 후 등록버튼을 클릭하세요</h3>
+		<h3>메인페이지 : 다양한 페이지 제공합니다</h3>
 	</div>
-	<jsp:include page = "/day05/footer.jsp"></jsp:include>
+
+	
+	<jsp:include page = "/day05/board/footer.jsp"></jsp:include>
 </body>
 </html>

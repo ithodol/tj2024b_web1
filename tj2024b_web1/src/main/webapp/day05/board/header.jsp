@@ -10,8 +10,8 @@
 	<div>
 		<h3>헤더 페이지</h3>
 		<ul>
-			<li><a href="/tj2024b_web1/day05/index.jsp">boardService11</a></li>
-			<li><a href="/tj2024b_web1/day05/board.jsp">게시판</a></li>
+			<li><a href="/tj2024b_web1/day05/board/index.jsp">메인</a></li>
+			<li><a href="/tj2024b_web1/day05/board/board.jsp">게시판</a></li>
 		</ul>
 	</div>
 </body>
