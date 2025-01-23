@@ -29,7 +29,11 @@ boardView(); // js가 열릴 때 최초 실행 해야함
 
 
 // [4] 게시물 수정
-const boardUpdate2 = (bno) => {
+const boardUpdate2 = () => {
+	
+	// 수정할 게시물 번호
+	let bno = new URL(location.href).searchParams.get('bno')
+	
 	// input 값 가져오기
 	let updateTitleInput = document.querySelector('.updateTitleInput').value
 	let updateContentInput = document.querySelector('.updateContentInput').value
@@ -47,12 +51,12 @@ const boardUpdate2 = (bno) => {
 		headers : {'Content-Type' : 'application/json'},
 		body : JSON.stringify(dataObj)
 	}
-	fetch(`/tj2024b_web1/day05/board/view.jsp?bno=${bno}`, option)
+	fetch(`/tj2024b_web1/day05/board`, option)
 		.then(r => r.json())
 		.then(data => {
 			if(data == true){
 				alert('게시물 수정 성공');
-				boardPrintAll();
+				location.href=`/tj2024b_web1/day05/board/view.jsp?bno=${bno}`;
 			}else{
 				alert('게시물 수정 실패');
 			} // if end

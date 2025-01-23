@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판</title>
 </head>
 <body>
 	<jsp:include page = "/day05/board/header.jsp"></jsp:include>

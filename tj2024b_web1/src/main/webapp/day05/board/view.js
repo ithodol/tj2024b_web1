@@ -1,4 +1,5 @@
-
+// 게시물 정보 객체 전역변수
+let boardInfo = null;
 
 
 // [3] 게시물 상세(개별) 조회
@@ -41,8 +42,7 @@ const boardUpdate = () => {
 }
 
 
-// 게시물 정보 객체 전역변수
-let boardInfo = null;
+
 
 // [5] 게시물 삭제
 const boardDelete = () => {
@@ -62,7 +62,7 @@ const boardDelete = () => {
 	
 	// 검증되었다면 fetch이용한 삭제 요청
 	const option = {method : 'DELETE'}
-	fetch(`/tj2024b_web1/day05/board/view.jsp?bno=${bno}`, option)
+	fetch(`/tj2024b_web1/day05/board?bno=${bno}`, option)
 		.then(response => response.json())
 		.then(data => {
 			// 그에 따른 화면 제어
