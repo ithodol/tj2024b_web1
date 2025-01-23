@@ -24,15 +24,15 @@ public class BoardDao {
 	// 게시물 등록
 	public boolean write(BoardDto boardDto) {
 		try {
-			String sql = "insert into board(bno, btitle, bcontent, bwriter, bpwd, bdate, bview) values(?,?,?,?,?,?,?)";
+			String sql = "insert into board(bno, btitle, bcontent, bwriter, bpwd) values(?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, boardDto.getBno());
 			ps.setString(2, boardDto.getBtitle());
 			ps.setString(3, boardDto.getBcontent());
 			ps.setString(4, boardDto.getBwriter());
 			ps.setString(5, boardDto.getBpwd());
-			ps.setString(6, boardDto.getBdate());
-			ps.setInt(7, boardDto.getBview());
+			//ps.setString(6, boardDto.getBdate());
+			//ps.setInt(7, boardDto.getBview());
 			int c = ps.executeUpdate();
 			if(c == 1) {return true;}			
 		}catch(SQLException e) {System.out.println(e);}
