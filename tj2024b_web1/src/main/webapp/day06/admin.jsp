@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ADMIN</title>
-<style>
+<style> 
 a {
 	text-decoration: none;
 	color: white;

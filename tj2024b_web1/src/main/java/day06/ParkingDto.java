@@ -9,7 +9,7 @@ public class ParkingDto {
 	private String outCar;
 	private boolean state;
 	
-	public ParkingDto() {}
+	public ParkingDto() {} 
 	public ParkingDto(int cno, String carNum, int carLo, String inCar, String outCar, boolean state) {
 		super();
 		this.cno = cno;

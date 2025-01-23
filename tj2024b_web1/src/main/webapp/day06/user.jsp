@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>USER</title>
 <style>
-a{
+a{ 
 text-decoration : none;
 color : white;}
 button {
