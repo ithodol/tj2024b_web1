@@ -27,10 +27,10 @@ const boardWrite = () => {
 		.then(response => response.json())
 		.then(data => {
 			if(data == true){
-				alert('[게시물 등록 성공]');
+				alert('게시물 등록 성공');
 				location.href="/tj2024b_web1/day05/board/board.jsp";
 			}else{
-				alert('[게시물 등록 실패]');
+				alert('게시물 등록 실패');
 			}
 		})
 		.catch(e => {alert(e + '[시스템 오류 : 관리자에게 문의하세요]')})

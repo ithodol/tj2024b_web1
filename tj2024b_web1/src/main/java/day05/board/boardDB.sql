@@ -17,4 +17,5 @@ insert into board(bno, btitle, bcontent, bwriter, bpwd, bdate, bview) values(2, 
 
 select * from board;
 
-update board set btitle = '안녕하세요1', bcontent = '저도 안녕하세요' where num = 1;
+update board set btitle = '안녕하세요1', bcontent = '저도 안녕하세요' where bno = 1;
+delete from board where bno =1;

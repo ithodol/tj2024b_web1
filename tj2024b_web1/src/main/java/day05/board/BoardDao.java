@@ -108,7 +108,16 @@ public class BoardDao {
 	
 	
 	// 게시물 삭제
-	
+	public boolean delete(int bno) {
+		try {
+			String sql = "delete from board where bno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			int c = ps.executeUpdate();
+			if(c == 1) {return true;}
+		}catch(SQLException e) {System.out.println(e);}
+		return false;
+	}
 	
 	
 	

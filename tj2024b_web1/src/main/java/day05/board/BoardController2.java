@@ -12,6 +12,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/day05/board/view")
 public class BoardController2 extends HttpServlet{
+	// 게시물 상세(개별) 조회
+	// 같은 컨트롤러(서블릿)에 메소드 중복 사용 불가능하기 때문에 상세 조회만 따로 빼서 작성
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 쿼리스트링의 매개변수 가져오기

@@ -43,12 +43,14 @@ public class BoardController extends HttpServlet {
 		resp.getWriter().print(jsonResult);
 	}
 	
+	// 게시물 상세(개별) 조회 -> BoardController2
 	
 	
 	
 	// 게시물 수정
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// HTTP 요청의 body 본문을 DTO로 타입 변환하기
 		ObjectMapper mapper = new ObjectMapper();
 		BoardDto boardDto = mapper.readValue(req.getReader(), BoardDto.class);
 		
@@ -57,13 +59,29 @@ public class BoardController extends HttpServlet {
 		resp.setContentType("application/json");
 		resp.getWriter().print(result);
 		
+		
+		// DAO 처리
+		// 결과를 HTTP 응답하기
 	}
 	
 	
 	
 	
 	// 게시물 삭제
-	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// HTTP 요청의 쿼리스트링 매개변수 가져오기
+		// req.getParameter("bno") = 쿼리스트링의 bno라는 매개변수 값 반환
+		// Integer.parseInt(문자열) = 문자열타입 -> 정수타입
+		int bno = Integer.parseInt( req.getParameter("bno"));
+		
+		// DAO 처리
+		boolean result = BoardDao.getInstance().delete(bno);
+		
+		// 결과를 HTTP 응답
+		resp.setContentType("application/json");
+		resp.getWriter().print(result);
+	}
 }
 
 
