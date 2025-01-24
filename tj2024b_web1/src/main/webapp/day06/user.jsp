@@ -34,20 +34,15 @@ input {
 	<div>
 		<h2>
 			주차장시스템(사용자)
-			<button class="headerBtn"><a href ="/ryu2024_web1/day06/admin.jsp">관리자 전환</a></button>
+			<button class="headerBtn"><a href ="/tj2024b_web1/day06/admin.jsp">관리자</a></button>
 		</h2>
 	</div>
-	차량번호 :
-	<input class="carNumInput" />
-	<br> 주차위치 :
-	<input class="carLoInput" />
-	<br>
-	<button>입차</button>
-	<button>출차</button>
-
-	<div></div>
+	차량번호 : <input class="carNumInput"/><br/>
+	주차위치 : <input class="carLoInput"/><br/>
+	<button onclick="inCar()">입차</button>
+	<button onclick="outCar()">출차</button>
 
 
-
+	<script src="user.js"></script>
 </body>
 </html>

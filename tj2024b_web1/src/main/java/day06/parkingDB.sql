@@ -4,8 +4,8 @@ use mydb0123;
 
 create table parking(         
    cno int auto_increment ,        
-    carNum varchar(20) ,              
-    carLo int,             
+    carNum varchar(20) unique,              
+    carLo int unique,             
     inCar datetime default now() ,            
     outCar datetime default now(),            
     state boolean default true ,
