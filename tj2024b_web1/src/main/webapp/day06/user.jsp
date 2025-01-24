@@ -42,6 +42,9 @@ input {
 	<button onclick="inCar()">입차</button>
 	<button onclick="outCar()">출차</button>
 
+	<div class="carValue">
+
+	</div>
 
 	<script src="user.js"></script>
 </body>
