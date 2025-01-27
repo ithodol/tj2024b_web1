@@ -27,7 +27,7 @@ const inCar = () => {
 		.catch(e => {alert(e + '[시스템 오류] \n 관리자에게 문의하세요')})
 
 }
-console.log(inCar);
+
 
 
 // 출차(상태변경) + 이용시간, 주차료 안내

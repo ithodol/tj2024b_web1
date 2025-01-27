@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ADMIN</title>
-<style> 
+<style>
 a {
 	text-decoration: none;
 	color: white;
@@ -55,8 +55,9 @@ table, th, td {
 <body>
 	<h2>
 		주차장시스템(관리자)
-		<button class="headerBtn"><a href ="/tj2024b_web1/day06/user.jsp">사용자</a></button>
-		
+		<button class="headerBtn">
+			<a href="/tj2024b_web1/day06/user.jsp"> 사용자 전환</a>
+		</button>
 	</h2>
 
 	<table border="1">
@@ -72,19 +73,10 @@ table, th, td {
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>143구1234</td>
-				<td>A1</td>
-				<td>00:00:00</td>
-				<td>00:00:01</td>
-				<td>true</td>
-				<td>
-					<button>수정</button>
-					<button>삭제</button>
-				</td>
+			
 		</tbody>
 	</table>
-	<script src="admin.js"></script>
+	<script src ="admin.js"></script>
+	
 </body>
 </html>
