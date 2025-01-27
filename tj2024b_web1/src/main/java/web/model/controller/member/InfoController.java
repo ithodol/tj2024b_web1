@@ -65,20 +65,30 @@ public class InfoController extends HttpServlet{
 	}
 
 	
+	// [현재 로그인된 내 회원 정보 수정]
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 1. HTTP 요청의 header body 자료(JSON)를 자바(DTO)로 받는다
+		ObjectMapper mapper = new ObjectMapper();
+		MemberDto memberDto = mapper.readValue(req.getReader(), MemberDto.class);
+		System.out.println(memberDto);
+		// 2. 데이터 유효성검사
+		// 3. DAO에게 데이터 전달, 응답 받기
+			// (1) 현재 로그인된 회원번호 조회
+		boolean result = false;
+		HttpSession session = req.getSession();
+		Object object = session.getAttribute("loginMno");
+		if(object != null) {
+			int loginMno = (Integer)object;
+			memberDto.setMno(loginMno); // 조회된 로그인 회원번호를 DTO에 넣어주고,
+			result = MemberDao.getInstance().update(memberDto);		
+		}
+		// 4. 자료(DTO/자바타입) 타입을 JSON(JS) 타입으로 변환하기
+		// 5. HTTP 응답의 header body 로 application/json  으로 반환하기
+		resp.setContentType("application/json");
+		resp.getWriter().print(result);
+	}
+	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 } // class end
+
