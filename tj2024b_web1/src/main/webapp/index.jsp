@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<!--  내가 만든 css -->
+	<link href="/tj2024b_web1/css/index.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="/header.jsp"></jsp:include>

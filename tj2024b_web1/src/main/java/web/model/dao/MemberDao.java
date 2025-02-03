@@ -33,7 +33,7 @@ public class MemberDao extends Dao {
 	public boolean signup( MemberDto memberDto ) {
 		try {
 			// [1] SQL 작성한다.
-			String sql ="insert into member( mid , mpwd , mname , mphone, , mimg) values( ? , ? , ? , ?, ?)";
+			String sql ="insert into member( mid , mpwd , mname , mphone, mimg) values( ? , ? , ? , ?, ?)";
 			// [2] DB와 연동된 곳에 SQL 기재한다. 		
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString( 1 , memberDto.getMid() );
@@ -86,6 +86,7 @@ public class MemberDao extends Dao {
                             memberDto.setMname( rs.getString("mname" ) );
                             memberDto.setMphone( rs.getString("mphone") );
                             memberDto.setMdate( rs.getString("mdate") );
+                            memberDto.setMimg(rs.getString("mimg"));
                             return memberDto; // 조회된 회원정보를 반환한다.
                     }
             }catch(SQLException e ) { System.out.println(e);}

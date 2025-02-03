@@ -11,7 +11,7 @@ const getLoginInfo = () => {
 	let html = ''; // (2) html 변수 선언
 
 	// 2.
-	fetch('/tj2024_web1/member/info', option)
+	fetch('/tj2024b_web1/member/info', option)
 		.then( r => r.json())
 		.then(data => {
 			console.log(data); // 코드 변경 후 서버가 자동 재실행이 되면 세션 초기화
@@ -27,7 +27,7 @@ const getLoginInfo = () => {
 				// (3-1) 각 상태에 따라 로그인 메뉴 구성
 				html += `
 						<li class="nav-item">
-							<a class="nav-link" href="#"> <img class="header_profile" src=""/> ${data.mid} 님 </a>
+							<a class="nav-link" href="#"> <img class="header_profile" src="/tj2024b_web1/upload/${data.mimg}"/> ${data.mname} 님 </a>
 						</li>
 						<li class="nav-item"> <a class="nav-link" href="#" onclick="onLogOut()">로그아웃</a></li>
 						`
