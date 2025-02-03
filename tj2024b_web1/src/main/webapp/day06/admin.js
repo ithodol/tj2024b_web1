@@ -3,7 +3,7 @@ const parkingFindAll = () =>{
 	let html ='';
 	
 	const option = {method :'GET'}
-	fetch('/ryu2024_web1/day06/parking/admin',option)
+	fetch('/tj2024b_web1/day06/parking/admin',option)
 		.then(response => response.json())
 		.then(data => {
 			data.forEach(parking =>{
@@ -29,11 +29,11 @@ parkingFindAll();
 
 const parkingDelete=(cno)=>{
 	const option = {method :'DELETE'}
-	fetch(`/ryu2024_web1/day06/parking/admin?cno=${cno}`,option)
+	fetch(`/tj2024b_web1/day06/parking/admin?cno=${cno}`,option)
 	.then(response => response.json())
 				.then(data => 
-					{if(data == true){alert('게시물 삭제 성공');parkingFindAll();}
-					else{alert('게시물 삭제 실패');}
+					{if(data == true){alert('출차 성공');parkingFindAll();}
+					else{alert('출차 실패');}
 				})
 		.catch(e =>{console.log(e)})
 	
