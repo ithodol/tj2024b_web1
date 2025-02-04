@@ -16,16 +16,16 @@
 	  <div class="carousel-inner">
 	  <!-- 각 이미지 항목 -->
 	    <div class="carousel-item active">
-	      <img src="/tj2024b_web1/img/main1.jpg" class="d-block w-100" alt="...">
+	      <img src="/tj2024b_web1/img/img1.jpg" class="d-block w-100" alt="...">
 	    </div>
 	    <div class="carousel-item">
-	      <img src="/tj2024b_web1/img/main2.jpg" class="d-block w-100" alt="...">
+	      <img src="/tj2024b_web1/img/img2.png" class="d-block w-100" alt="...">
 	    </div>
 	    <div class="carousel-item">
-	      <img src="/tj2024b_web1/img/main3.jpg" class="d-block w-100" alt="...">
+	      <img src="/tj2024b_web1/img/img3.jpg" class="d-block w-100" alt="...">
 	    </div>
 	    <div class="carousel-item">
-	      <img src="/tj2024b_web1/img/main4.jpg" class="d-block w-100" alt="...">
+	      <img src="/tj2024b_web1/img/img4.jpg" class="d-block w-100" alt="...">
 	    </div>
 	  </div>
 	  <!-- 왼쪽 버튼 -->
@@ -40,4 +40,3 @@
 	  </button>
 	</div>
 </body>
-</html>
