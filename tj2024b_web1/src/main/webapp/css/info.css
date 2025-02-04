@@ -10,3 +10,13 @@
 .mimgbox {
 	text-align: center;
 }
+
+.tableBox > table{
+	text-align: center;
+	margin: 0 auto;
+}
+.tableBox > h2{
+	text-align: center;
+	height: 80px;
+}
+
