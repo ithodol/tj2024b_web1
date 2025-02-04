@@ -50,6 +50,7 @@ public class MemberDao extends Dao {
 	} // f end 
 	
 	
+	
 	// [2]. 로그인 SQL 처리 메소드
 	public int login( MemberDto memberDto ) {
 		// int : SQL로 조회된 회원번호를 반환하기 위해서

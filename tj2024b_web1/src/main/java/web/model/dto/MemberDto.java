@@ -17,6 +17,9 @@ public class MemberDto {
 	private String mphone;	// 연락처 
 	private String mdate;	// 가입일 
 	private String mimg;	// 프로필
+	
+	
+	
 
 	// @NoArgsConstructor
 	// public MemberDto()
