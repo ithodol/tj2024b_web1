@@ -37,11 +37,11 @@ public class ParkingUserDao {
 	
 	
 	// 조회
-	public ParkingDto printByid(int cno) {
+	public ParkingDto printByid(int carNum) {
 		try {
-			String sql = "select * from parking where cno = ?";
+			String sql = "select * from parking where carNum = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, cno);
+			ps.setInt(1, carNum);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
 				ParkingDto parkingDto = new ParkingDto();
@@ -56,18 +56,29 @@ public class ParkingUserDao {
 		return null;
 	}
 	
+	// 조회 / 출차시간 표시
+	public boolean serchCar(ParkingDto parkingDto) {
+		try {
+			 LocalDateTime now = LocalDateTime.now();
+		     Timestamp timestamp = Timestamp.valueOf(now);
+			String sql = "update parking set outCar = ? where carNum = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setTimestamp(1, timestamp);
+			ps.setString(2, parkingDto.getCarNum());
+			int c = ps.executeUpdate();
+			if(c == 1) {return true;}
+		}catch(SQLException e) {System.out.println(e);}
+		return false;
+	}
 	
 	
 	
 	// 결제/출차
 	public boolean outCar(ParkingDto parkingDto) {
 		try {
-			 LocalDateTime now = LocalDateTime.now();
-		     Timestamp timestamp = Timestamp.valueOf(now);
-			String sql = "update parking set state = false, outCar = ? where cno = ?";
+			String sql = "update parking set state = false where carNum = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setTimestamp(1, timestamp);
-			ps.setInt(2, parkingDto.getCno());
+			ps.setString(1, parkingDto.getCarNum());
 			int c = ps.executeUpdate();
 			if(c == 1) {return true;}
 		}catch(SQLException e) {System.out.println(e);}

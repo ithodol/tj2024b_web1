@@ -40,7 +40,7 @@ input {
 	차량번호 : <input class="carNumInput"/><br/>
 	주차위치 : <input class="carLoInput"/><br/>
 	<button onclick="inCar()">입차</button>
-	<button onclick="serchCar()">조회</button>
+	<button onclick="updateOutCar()">조회</button>
 
 	<div class="carValue">
 
