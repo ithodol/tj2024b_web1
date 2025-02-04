@@ -39,7 +39,7 @@
 	          </div>
 
 	          <button class="w-100 btn btn-lg btn-primary" type="button" onclick="onUpdate()">회원수정</button>
-	          <hr class="my-4">
+	          <div class="my-4"></div>
 	          <button class="w-100 btn btn-lg btn-primary" type="button" onclick="onDelete()">회원탈퇴</button>
 
 	        </form>
