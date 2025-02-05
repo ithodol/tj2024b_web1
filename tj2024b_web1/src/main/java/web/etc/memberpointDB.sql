@@ -1,41 +1,46 @@
-drop database if exists mydb0204;
-create database mydb0204;
-use mydb0204;
+-- 프로젝트 : jspweb DML 과 샘플 INSERT
+# 1. DB 구성한다.
+drop database if exists jspweb;                
+create database jspweb;                           
+use jspweb;                                                  
+# 2. 테이블 생성  , PK 테이블 먼저 생성 한다. 적절하게 타입 과 제약조건을 고려한다.
 
-
-# 회원 테이블
+# [1] 회원테이블 생성 
 create table member(
-	mno int unsigned auto_increment,
-    id varchar(20) not null,
-    pwd varchar(20) not null,
-    name varchar(10) not null,
-    tel varchar(20) not null,
-    date datetime default now(),
-    newpoint int default 100,
-    constraint primary key(mno)
-);
--- 회원 샘플
-insert into member(id, pwd, name, tel) values('qwe123', '111', '유재석', '010-1111-1111');
-insert into member(id, pwd, name, tel) values('asd456', '222', '강호동', '010-2222-2222');
-insert into member(id, pwd, name, tel) values('zxc789', '333', '신동엽', '010-3333-3333');
+    mno int unsigned auto_increment , 
+    mid varchar(30) not null unique ,
+    mpwd varchar(30) not null ,
+    mname varchar(20) not null ,
+    mphone varchar(13) not null unique , 
+    mdate datetime default now() , 
+    mimg varchar(255) default 'default.jpg',
+    constraint primary key( mno )
+); # table end
 
+# [*] 회원테이블 샘플 레코드 삽입
+insert into member ( mid , mpwd , mname , mphone ) values( 'qwe123' , 'a123456' , '유재석' ,  '010-3333-3333' );
+insert into member ( mid , mpwd , mname , mphone ) values( 'asd123' , 'b123456' , '강호동' ,  '010-4444-4444' );
+insert into member ( mid , mpwd , mname , mphone ) values( 'zxc123' , 'c123456' , '신동엽' ,  '010-5555-5555' );
+insert into member ( mid , mpwd , mname , mphone ) values( 'vbn123' , 'd123456' , '서장훈' ,  '010-6666-6666' );
+insert into member ( mid , mpwd , mname , mphone ) values( 'rty123' , 'e123456' , '하하'   ,  '010-7777-7777' );
 select * from member;
 
-
-# 포인트 테이블
-create table point(
-	pno int unsigned auto_increment,
-	loginpoint int,
-    boardpoint int,
-    bookingpoint int,
-    mno int,
-    constraint foreign key(mno) references member(mno),
-    constraint primary key(pno)
+# [2] 포인트 테이블 생성 
+create table pointlog(
+	pono int unsigned auto_increment , 
+    pocomment varchar(255) not null , 
+    pocount int ,
+    podate datetime default now() ,
+    mno int unsigned , 
+    constraint primary key( pono ),
+    constraint foreign key( mno ) references member( mno ) on update cascade on delete cascade 
 );
 
-insert into point(loginpoint, boardpoint, bookingpoint, mno) values('1', '-5', '10', '1');
-insert into point(loginpoint, boardpoint, bookingpoint, mno) values('2', '-10', '20', '2');
-insert into point(loginpoint, boardpoint, bookingpoint, mno) values('3', '-15', '30', '3');
+# [*] 회원테이블 샘플 레코드 삽입
+insert into pointlog ( pocomment , pocount , mno ) values( '회원가입축하' , 100 , 1  );
+insert into pointlog ( pocomment , pocount , mno ) values( '로그인' , 1 , 1  );
+insert into pointlog ( pocomment , pocount , mno ) values( '아이템구매' , -50 , 1  );
+insert into pointlog ( pocomment , pocount , mno ) values( '포인트구매' , 2000 , 1  );
+insert into pointlog ( pocomment , pocount , mno ) values( '아이템구매' , 1000 , 1  );
 
-select * from point;
-
+select * from pointlog;
