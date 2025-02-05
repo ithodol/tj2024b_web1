@@ -27,3 +27,5 @@ update parking set state = false , outCar = "2025-01-22 17:51:33" where cno = 3;
 select * from parking;
 #(4) 주차내역 개별 삭제 
 delete from parking where cno = 3; 
+
+select * from parking where carNum = 1212;
