@@ -22,7 +22,6 @@ public class ParkingUserController extends HttpServlet{
 		
 		resp.setContentType("application/json");
 		resp.getWriter().print(result);
-
 	}
 	
 	// 개별조회
@@ -51,21 +50,5 @@ public class ParkingUserController extends HttpServlet{
 		
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

@@ -132,34 +132,28 @@ const serchCar = () => {
 // 진짜 출차
 const outCar = () => {
 	let carNum = document.querySelector('.carNumInput').value
-	let state = false
+	//let state = false
 	const obj = {
-		state : state
+		carNum : carNum,
+		state : false
 	}
-	
+
 	const option = {
 		method : 'PUT',
-		headers : {'Content-Type' : 'application/json'},
+		headers : { 'Content-Type' : 'application/json'},
 		body : JSON.stringify(obj)
+		
 	}
 	
 	fetch(`/tj2024b_web1/day06/parking/user?carNum=${carNum}`, option)
 		.then(r => r.json())
 		.then(data => {
-			if(data == false) {
-				state = false;
-			}
+			console.log(data);
 			
 		})
 		.catch(e => {console.log(e);})
 	
 }
-
-
-
-
-
-
 
 
 

@@ -76,9 +76,10 @@ public class ParkingUserDao {
 	// 결제/출차
 	public boolean outCar(ParkingDto parkingDto) {
 		try {
-			String sql = "update parking set state = false where carNum = ?";
+			String sql = "update parking set state = ? where carNum = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, parkingDto.getCarNum());
+			ps.setBoolean(1, parkingDto.isState());
+			ps.setString(2, parkingDto.getCarNum());
 			int c = ps.executeUpdate();
 			if(c == 1) {return true;}
 		}catch(SQLException e) {System.out.println(e);}
@@ -88,24 +89,6 @@ public class ParkingUserDao {
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
