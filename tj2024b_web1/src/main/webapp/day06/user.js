@@ -148,8 +148,8 @@ const outCar = () => {
 	fetch(`/tj2024b_web1/day06/parking/user?carNum=${carNum}`, option)
 		.then(r => r.json())
 		.then(data => {
-			console.log(data);
-			
+			alert('결제완료. 출차 되었습니다.');
+			location.href="user.jsp";
 		})
 		.catch(e => {console.log(e);})
 	
