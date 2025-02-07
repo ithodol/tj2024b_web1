@@ -49,7 +49,7 @@ public class BoardDao extends Dao{
 			// (3) + 02.07 카테고리별 출력 cno 조건 추가
 			String sql = "select * from board b inner join member m on b.mno = m.mno "
 					+ "where cno = ? "
-					+ "order by b.bno desc";
+					+ "order by b.bno asc";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, cno);
 			ResultSet rs = ps.executeQuery();
