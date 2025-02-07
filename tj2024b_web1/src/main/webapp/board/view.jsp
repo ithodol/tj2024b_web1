@@ -14,8 +14,8 @@
 			 / 조회수 : <span class="viewbox">조회수</span>
 			 / 작성일 : <span class="datebox">작성일</span>
 		</div>
-		<div style="text-align:center; margin:20px 0px; font-size:20px; font-weight:bold;" class="titlebox">제목 구역</div>
 		<hr/>
+		<div style="margin:30px 0px; font-size:30px; font-weight:bold;" class="titlebox">제목 구역</div>
 		<div class="contentbox">본문 구역</div>
 	</div>
 	<script src="/tj2024b_web1/js/board/view.js" type="text/javascript"></script>
