@@ -20,14 +20,15 @@
 				<option value="4">튜토리얼</option>
 				<option value="5">사용자 리뷰</option>				
 			</select>
-			<input type="text" class="titleinput form-control"/>
-			<textarea id="summernote" name="editordata" class="contentinput form-control"></textarea>
-			<button onclick="onWrite()" type="button" class="btn btn-primary">등록</button>
+			<input type="text" class="titleinput form-control" placeholder="제목"/>
+			<textarea id="summernote" name="editordata" class="contentinput form-control" ></textarea>
+			<button onclick="onWrite()" type="button" class="btn btn-primary" style="margin-top: 30px; text-aline:end">등록</button>
 		</form>
 	</div>
 	<!-- 스크립트 불러오는 순서가 존재함 = 내가 만든 JS를 가장 하단에 배치 -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/lang/summernote-ko-KR.min.js"></script>
 	<script src="/tj2024b_web1/js/board/write.js" type="text/javascript"></script>
 </body>
 </html>

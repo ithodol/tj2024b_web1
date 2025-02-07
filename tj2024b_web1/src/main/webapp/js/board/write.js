@@ -1,7 +1,12 @@
 // [**] 썸머노트 실행
 $(document).ready(function() {
-  $('#summernote').summernote();
+  $('#summernote').summernote({
+	placeholder : '내용을 입력해주세요.',
+	height : 500,
+	lang : 'ko-KR'
+  });
 });
+
 
 // [1] 글쓰기 요청 메소드 
 const onWrite = () => {
