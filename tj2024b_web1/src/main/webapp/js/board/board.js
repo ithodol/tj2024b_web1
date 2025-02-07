@@ -27,7 +27,7 @@ const findAll = () => {
 				// 7. 게시물 하나씩 html 테이블의 행으로 표현하여 html 변수에 누적
 				html += `<tr>
 							<td>${board.bno}</td>
-							<td>${board.btitle}</td>
+							<td> <a href="view.jsp?bno=${board.bno}"> ${board.btitle}</a></td>
 							<td>${board.mid}</td>
 							<td>${board.bdate}</td>
 							<td>${board.bview}</td>
