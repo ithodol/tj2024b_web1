@@ -49,7 +49,7 @@ public class MemberDao extends Dao {
 		return false;
 	} // f end 
 	
-	
+	 
 	
 	// [2]. 로그인 SQL 처리 메소드
 	public int login( MemberDto memberDto ) {

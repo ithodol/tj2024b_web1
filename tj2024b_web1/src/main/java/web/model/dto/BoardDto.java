@@ -20,6 +20,6 @@ public class BoardDto {
     // + HTML에 출력할 때 작성자의 회원 번호가 아닌 작성자 ID 출력하기 위함
     private String mid;
     // + HTML에 출력할 대 카테고리의 번호가 아닌 카테고리명 출력하기 위함
-    private String cname;
+    private String cname; 
    
 }

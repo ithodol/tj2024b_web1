@@ -43,7 +43,6 @@ const getLoginInfo = () => {
 }
 getLoginInfo(); // js가 열렸을 때 최초 1번 실행
 
-
 // [2] 로그아웃 요청 함수
 const onLogOut = () => {
 	const option = {

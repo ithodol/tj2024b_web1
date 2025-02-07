@@ -18,7 +18,7 @@ public class MemberDto {
 	private String mdate;	// 가입일 
 	private String mimg;	// 프로필
 	private int mpoint; // 내 포인트 ** DB에는 존재하지 않음 / 자바 내부적으로 사용할 예정
-	
+	 
 	
 	
 
