@@ -4,6 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -97,7 +100,6 @@ public class BoardDao extends Dao{
 				return true;
 			}
 		}catch(SQLException e) {System.out.println(e);}
-		
 		return false;
 	}
 	
@@ -133,7 +135,65 @@ public class BoardDao extends Dao{
 		}catch(SQLException e) {System.out.println(e);}
 		return null;
 	}
-}
+	
+	// [6] 댓글 쓰기
+	public boolean replyWrite(Map<String, String> map) {
+		
+		try {
+			String sql = "insert into reply (rcontent, bno, mno) value(?, ?, ?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, map.get("rcontent"));
+			ps.setString(2, map.get("bno"));
+			ps.setString(3, map.get("mno"));
+			int count = ps.executeUpdate();
+			if(count == 1) {
+				return true;
+			}
+		}catch(SQLException e) {System.out.println(e);}
+		return false;
+	} // replyWrite end
+	
+	
+	// [7] 특정 게시물의 댓글 조회
+	public List<Map<String, String>> replyFindAll(int bno){
+		List<Map<String, String>> list = new ArrayList<Map<String,String>>();
+		try {
+			// board 게시물 테이블 / member 회원 테이블 조인 : 게시물의 mno를 이용하여 회원의 mid와 mimg를 조회/참조하기 위함
+			String sql = "select * from reply r inner join member m on r.mno = m.mno where r.bno = ?";
+			PreparedStatement ps =  conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("rno", rs.getString("rno"));
+				map.put("rcontent", rs.getString("rcontent"));
+				map.put("rdate", rs.getString("rdate"));
+				map.put("mid", rs.getString("mid"));
+				map.put("mno", rs.getString("mno"));
+				map.put("mimg", rs.getString("mimg"));
+				list.add(map);
+			}
+		}catch(SQLException e) {System.out.println(e);}
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+} // class end
 
 
 
