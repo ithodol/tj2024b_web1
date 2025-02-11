@@ -30,7 +30,9 @@ public class InfoController extends HttpServlet{
 		if(object != null) { 
 			int loginMno = (Integer)object;
 			result = MemberDao.getInstance().myInfo(loginMno);
-			
+            // * 내 (남은)포인트 조회
+            int mpoint = MemberDao.getInstance().getPoint(loginMno);
+            result.setMpoint( mpoint );
 		}
 		// 4. 자료(DTO/자바타입) 타입을 JSON(JS) 타입으로 변환하기
 		ObjectMapper mapper = new ObjectMapper();

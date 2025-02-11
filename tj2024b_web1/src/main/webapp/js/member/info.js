@@ -59,14 +59,34 @@ const onUpdate = () => {
 
 
 
-
-
-
-
-
-
-
-
+// [4] 내 포인트 내역 조회 요청 
+const getPointLog = ( ) => {
+        // fetch 옵션 
+        const option = { method : 'GET' }
+        // fetch 실행 
+        fetch( '/tj2024b_web1/point' , option )
+                .then( r => r.json() )
+                .then( data => { 
+                        if( data != null ){ // 로그인 상태이면 
+                                const tbody = document.querySelector('tbody');
+                                
+                                let html = ``;
+                                
+                                data.forEach(  (point) =>{
+                                        html += `<tr>
+                                                                <th> ${ point.pono} </th> 
+                                                                <th> ${ point.pocomment } </th>
+                                                                <th> ${ point.pocount } </th> 
+                                                                <th> ${ point.podate } </th>
+                                                        </tr>`
+                                })
+                                
+                                tbody.innerHTML = html;
+                        }
+                })
+                .catch( e => { console.log(e) } )
+} // f end 
+getPointLog();
 
 
 

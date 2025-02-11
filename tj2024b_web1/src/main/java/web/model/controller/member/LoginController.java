@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import web.model.dao.MemberDao;
 import web.model.dto.MemberDto;
+import web.model.dto.PointDto;
 
 @WebServlet("/member/login")
 public class LoginController extends HttpServlet{
@@ -33,6 +34,12 @@ public class LoginController extends HttpServlet{
 				// (3) 세션의 활성화 유시 시간 설정
 				session.setAttribute("loginMno", loginMno); // 세션에 속성 추가 : 톰캣 서버의 테이터 저장
 				session.setMaxInactiveInterval(60*10); // 초 : 60초*10 => 10분
+                // * 로그인 성공이면 포인트 지급 
+                PointDto pointDto = new PointDto();
+                pointDto.setMno( loginMno );
+                pointDto.setPocomment("로그인");
+                pointDto.setPocount( 1 );
+                MemberDao.getInstance().setPoint( pointDto );
 			} // if end
 		// 4. 자료(DTO/자바타입) 타입을 JSON(JS) 타입으로 변환하기
 		// 5. HTTP 응답의 header body 로 application/json  으로 반환하기
