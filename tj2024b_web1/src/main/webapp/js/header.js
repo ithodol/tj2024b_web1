@@ -48,12 +48,12 @@ const onLogOut = () => {
 	const option = {
 		method : 'DELETE'
 	}
-	fetch('tj2024_web1/member/login', option)
+	fetch('/tj2024b_web1/member/login', option)
 		.then(r => r.json())
 		.then(data => {
 			if(data == true){
 				alert('로그아웃 되었습니다');
-				location.href="/tj2024_web1/member/login.jsp"
+				location.href="/tj2024b_web1/member/login.jsp"
 			}
 		})
 		.catch(e => {console.log(e);})
