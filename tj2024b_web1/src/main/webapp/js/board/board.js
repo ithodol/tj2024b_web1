@@ -7,6 +7,48 @@
 console.log(new URL(location.href).searchParams);
 console.log(new URL(location.href).searchParams.get('cno'));
 
+// [2] 지정한 카테고리별 게시물 조회 요청 + 2.11 페이징 처리 추가
+const findAll = () => {
+	const cno = new URL(location.href).searchParams.get('cno')
+	// * 현재 경로상의 page 번호 찾기 
+	let page = new URL(location.href).searchParams.get('page')
+	if(page == null){
+		page = 1; // 만약 page가 없으면 1페이지로 설정
+	}
+
+	const option = {method : 'GET'}
+
+	fetch(`/tj2024b_web1/board?cno=${cno}&page=${page}`, option)
+		.then(r => r.json())
+		.then(data => {
+			console.log(data);
+
+			const boardList = document.querySelector('.boardList > tbody')
+
+			let html = ``;
+
+			data.forEach( (board) => {
+
+				html += `<tr>
+							<td>${board.bno}</td>
+							<td> <a href="view.jsp?bno=${board.bno}"> ${board.btitle}</a></td>
+							<td>${board.mid}</td>
+							<td>${board.bdate}</td>
+							<td>${board.bview}</td>
+						</tr>`;
+			})
+
+			boardList.innerHTML = html;
+			
+		})
+		.catch(e => {console.log(e);})
+}
+findAll();
+
+
+
+
+/*
 // [2] 지정한 카테고리별 게시물 조회 요청
 const findAll = () => {
 	// 1. 현재 페이지의 카테고리 구하기
@@ -40,3 +82,4 @@ const findAll = () => {
 		.catch(e => {console.log(e);})
 }
 findAll(); // 페이지가 열리면 함수 실행
+*/

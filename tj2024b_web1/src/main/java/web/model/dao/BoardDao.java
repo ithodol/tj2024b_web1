@@ -41,7 +41,7 @@ public class BoardDao extends Dao{
 	
 	
 	// [2] 게시물 전체 조회
-	public ArrayList<BoardDto> findAll(int cno) {
+	public ArrayList<BoardDto> findAll(int cno, int startRow, int display) {
 		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
 		try {
 			// (1) 게시물 테이블의 모든 속성을 전체 조회
@@ -50,11 +50,20 @@ public class BoardDao extends Dao{
 				// inner join : 다른 테이블과 함께 조회할 때, join 조건은 주로 : PK-FK
 			// select * from 테이블1 inner join 테이블2 on 테이블1.PK필드명 = 테이블2.FK필드명;
 			// (3) + 02.07 카테고리별 출력 cno 조건 추가
-			String sql = "select * from board b inner join member m on b.mno = m.mno "
-					+ "where cno = ? "
-					+ "order by b.bno asc";
+			//String sql = "select * from board b inner join member m on b.mno = m.mno "
+					//+ "where cno = ? "
+					//+ "order by b.bno asc";
+			
+				// (페이징 처리 추가)
+				String sql = "select * from board b inner join member m on b.mno = m.mno "
+						+ "where b.cno = ? "
+						+ "order by b.bno asc limit ? , ? ";
+								// limit 시작번호, 갯수
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, cno);
+			// (페이징 처리 추가)
+			ps.setInt(2, startRow);
+			ps.setInt(3, display);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				BoardDto boardDto = new BoardDto();

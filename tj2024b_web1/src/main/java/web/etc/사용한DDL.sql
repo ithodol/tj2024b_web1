@@ -212,3 +212,25 @@ INSERT INTO reply (rcontent, mno, bno) VALUES
 ('더 많은 자료를 찾을 수 있을까요?', 4, 2);
 
 select * from reply;
+
+
+
+-- limit 키워드를 이용한 페이징 처리 
+select * from board; -- 모든 게시물 조회 
+select * from board limit 5; -- 첫번째 레코드부터 5개로 제한 한 게시물 조회
+select * from board limit 0 , 5; -- 첫번째 레코드 부터 5개 제한 
+select * from board limit 5 , 5; -- 6번째 레코드 부터 5개 제한 
+-- [1] 페이지당 게시물을 5개 조회한다면
+select * from board limit 0 , 5;          -- 1페이지
+select * from board limit 6 , 5;        -- 2페이지
+select * from board limit 10 , 5;                -- 3페이지 
+-- * 시작번호( startrow ) 와 개수(display)
+-- + 카테고리별 
+select * from board where cno = 1 limit 0,5;        -- 1번(뉴스) 카테고리의 1페이지
+
+# 카테고리별 게시물 조회 
+select * from board b inner join member m on b.mno = m.mno where cno = 1 order by b.bno desc;
+# 카테고리별 게시물 조회 + 페이징 
+select * from board b inner join member m on b.mno = m.mno where b.cno = 1 order by b.bno desc limit 0 , 5 ;
+-- select * from board b inner join member m on b.mno = m.mno where b.cno = ? order by b.bno desc limit ? , ? ;
+ 

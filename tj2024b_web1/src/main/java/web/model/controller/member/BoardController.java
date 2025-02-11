@@ -56,14 +56,25 @@ public class BoardController extends HttpServlet {
 	
 	// [2] 게시물 전체조회
 		// 02.07 추가 : 카테고리별 전체 조회
+			// 2.10 추가 : 페이징 처리
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("get ok");
 		// (1) 요청 매개변수 / cno 카테고리 번호 가져오기
-		int cno = Integer.parseInt(req.getParameter("cno"));
+		int cno = Integer.parseInt(req.getParameter("cno")); // 카테고리번호
+		int page = Integer.parseInt(req.getParameter("page")); // 페이지번호
 		
-		// (2) DAO에게 전체 게시물 요청하고 결과 받기
-		ArrayList<BoardDto> result = BoardDao.getInstance().findAll(cno);
+			// * 페이징처리에 필요한 자료 준비
+			// 1. 한 페이지당 출력할 게시물의 갯수 / 매개변수로 받기
+				int display = 5; // 한 페이지당 게시물 5개씩 출력
+			// 2. 페이지당 조회할 게시물의 시작 번호 (현재페이지-1)*페이지당게시물수
+				int startRow = (page-1) * display;
+				// 예) 게시물의 10개 존재한다고 가정 : 0번 1번 2번 3번 ... 9번
+				// 1페이지의 시작번호 : 0번 / 2페이지 시작번호 : 4번
+							
+		
+		// (2) DAO에게 전체 게시물 요청하고 결과 받기 / (추가) 페이징 처리 자료 넘기기
+		ArrayList<BoardDto> result = BoardDao.getInstance().findAll(cno, startRow, display);
 		// (3) 받은 전체 게시물을 JSON 형색의 문자열로 변환하기
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonResult = mapper.writeValueAsString(result);
