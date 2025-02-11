@@ -10,7 +10,7 @@
 	<jsp:include page="/header.jsp"></jsp:include>
 	<div class="container"> <!-- 부트스트랩 -->
 		<button class="btn btn-primary" onclick="location.href='write.jsp'">글쓰기</button>
-		<table class="table boardList">
+		<table class="table boardlist">
 			<thead>
 				<tr style="text-align:center;">
 					<th>번호</th>

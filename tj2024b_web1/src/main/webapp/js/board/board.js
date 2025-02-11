@@ -20,14 +20,12 @@ const findAll = () => {
 
 	fetch(`/tj2024b_web1/board?cno=${cno}&page=${page}`, option)
 		.then(r => r.json())
-		.then(data => {
-			console.log(data);
-
-			const boardList = document.querySelector('.boardList > tbody')
-
-			let html = ``;
-
-			data.forEach( (board) => {
+		.then( response => { console.log( response );
+                const boardlist = document.querySelector('.boardlist > tbody')
+                let html = ``;
+                
+                let boardList = response.data;
+                boardList.forEach( (board)=>{
 
 				html += `<tr>
 							<td>${board.bno}</td>
@@ -38,17 +36,17 @@ const findAll = () => {
 						</tr>`;
 			})
 
-			boardList.innerHTML = html;
-			getPageBtn();
+			boardlist.innerHTML = html;
+			getPageBtn(response, cno); // 페이징 버튼 생성 함수 실행 , 현재 페이지번호 전달
 		})
 		.catch(e => {console.log(e);})
 }
 findAll();
 
 // [3] 페이지 버튼 생성 함수
-const getPageBtn = (page) => {
+const getPageBtn = (response, cno) => {
 	
-	page = parsInt(page); // parseInt() 정수로 타입 변환 함수
+	page = parseInt(response.page); // parseInt() 정수로 타입 변환 함수
 	  // 어디에
 	  const pagebtnbox = document.querySelector('.pagebtnbox')
 	  
@@ -58,7 +56,7 @@ const getPageBtn = (page) => {
 	  // 이전 버튼 : 만약 현재 페이지가 1이하 페이지면 1페이지 띄우기 / 아니면 -1 
 	  html += `
 	  		<li class="page-item">
-	  			<a class="page-link" href="board.jsp?cno=1&page=${page <= 1 ? 1 : page-1}">
+	  			<a class="page-link" href="board.jsp?cno=${cno}&page=${page <= 1 ? 1 : page-1}">
 	  				이전
 	  			</a>
 	  		</li>
@@ -66,19 +64,22 @@ const getPageBtn = (page) => {
 	  
 	  // 1부터 10까지 버튼 만들기 / 실행조건 : 게시물 출력 후
 	  	// 최대페이지, 현재 페이지의 시작 버튼 번호, 현재 페이지의 끝 버튼 번호
-	  for(let index = 1; index <= 10; index++){
+//	  for(let index = 1; index <= 10; index++){
+	  for(let index = response.startbtn; index <= response.endbtn; index++){
+		// 만약 현재 페이지가 index와 같다면 부트스트랩에 active 클래스 부여
 		html += `
-				<li class="page-item">
-					<a class="page-link" href="board.jsp?cno=1&page=${index}">
+				<li class="page-item"> 
+					<a class="page-link ${page == index ? 'active': ''}" href="board.jsp?cno=${cno}&page=${index}">
 						${index}
 					</a>
 				</li>
 				`
 	  }
 	  
+	  	// 다음 버튼 : 만약 현재 페이지가 마지막페이지(전체페이지수) 이면 마지막페이지 고정
 	  html += `
 	  		<li class="page-item">
-	  			<a class="page-link" href="board.jsp?cno=1&page=${page <= 1 ? 1 : page+1}">
+	  			<a class="page-link" href="board.jsp?cno=${cno}&page=${page >= response.totalpage ? page : page +1}">
 	  				다음
 	  			</a>
 	  		</li>

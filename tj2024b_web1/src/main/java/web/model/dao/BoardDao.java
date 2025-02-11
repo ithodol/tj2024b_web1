@@ -39,6 +39,20 @@ public class BoardDao extends Dao{
 		return false;
 	}
 	
+	// [2-1] 게시물의 전체 개수 조회
+	public int getTotalSize(int cno) {
+		try {
+			String sql = "select count(*) from board where cno = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, cno);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		}catch(Exception e) {System.out.println(e);}
+		return 0;
+	}
+	
 	
 	// [2] 게시물 전체 조회
 	public ArrayList<BoardDto> findAll(int cno, int startRow, int display) {
