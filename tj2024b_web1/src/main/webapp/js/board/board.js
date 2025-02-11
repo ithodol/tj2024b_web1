@@ -39,11 +39,56 @@ const findAll = () => {
 			})
 
 			boardList.innerHTML = html;
-			
+			getPageBtn();
 		})
 		.catch(e => {console.log(e);})
 }
 findAll();
+
+// [3] 페이지 버튼 생성 함수
+const getPageBtn = (page) => {
+	
+	page = parsInt(page); // parseInt() 정수로 타입 변환 함수
+	  // 어디에
+	  const pagebtnbox = document.querySelector('.pagebtnbox')
+	  
+	  // 무엇을
+	  let html = ``
+	  
+	  // 이전 버튼 : 만약 현재 페이지가 1이하 페이지면 1페이지 띄우기 / 아니면 -1 
+	  html += `
+	  		<li class="page-item">
+	  			<a class="page-link" href="board.jsp?cno=1&page=${page <= 1 ? 1 : page-1}">
+	  				이전
+	  			</a>
+	  		</li>
+	  		`
+	  
+	  // 1부터 10까지 버튼 만들기 / 실행조건 : 게시물 출력 후
+	  	// 최대페이지, 현재 페이지의 시작 버튼 번호, 현재 페이지의 끝 버튼 번호
+	  for(let index = 1; index <= 10; index++){
+		html += `
+				<li class="page-item">
+					<a class="page-link" href="board.jsp?cno=1&page=${index}">
+						${index}
+					</a>
+				</li>
+				`
+	  }
+	  
+	  html += `
+	  		<li class="page-item">
+	  			<a class="page-link" href="board.jsp?cno=1&page=${page <= 1 ? 1 : page+1}">
+	  				다음
+	  			</a>
+	  		</li>
+	  		`
+	  // 출력
+	  pagebtnbox.innerHTML = html;
+}
+
+
+
 
 
 
