@@ -59,3 +59,46 @@ const onLogOut = () => {
 		})
 		.catch(e => {console.log(e);})
 }
+
+
+
+// [3] 클라이언트 웹소켓의 객체를 생성하고 서버 소켓으로부터 접속 연동 시도
+const alarmSocket = new WebSocket('ws://localhost:8080/tj2024b_web1/alarmsocket');
+
+
+// [4] 클라이언트 웹소켓이 서버 소켓으로부터 메세지를 받았을 때 
+alarmSocket.onmessage = (msgEvent) => {
+	console.log(msgEvent.data); // 알림 메세지를 console.log() 띄우기
+	
+	// 콘솔이 아닌 부트스트랩을 활용해서 화면에 띄우기
+	const alarmbox = document.querySelector('.alarmbox')
+	let html = `
+				<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+				  <div class="toast-header">
+				    <strong class="me-auto">${msgEvent.data}</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				  </div>
+				</div>
+				`
+	alarmbox.innerHTML += html;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
