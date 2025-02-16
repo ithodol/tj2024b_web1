@@ -67,6 +67,7 @@ create table board(
     bcontent   longtext   not null ,
     bdate       datetime default now() ,
     bview      int default 0 ,
+    bpoint		int default 0,
     mno         int unsigned , -- 회원번호 fk
     cno         int unsigned , -- 카테고리번호 fk
     constraint primary key( bno ) ,
